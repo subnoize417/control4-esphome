@@ -60,9 +60,6 @@ bleScanner:addNode(localScannerNode)
 
 local bluetoothProxyCapability = BluetoothProxyCapability:new(esphome)
 
---- @type boolean
-local isLeaderInstance = false
-
 --- @type table<EntityType, Entity>
 local Entities = {
   [BinarySensorEntity.TYPE] = BinarySensorEntity:new(esphome),
@@ -124,8 +121,6 @@ function OnDriverLateInit()
   if not CheckMinimumVersion("Driver Status") then
     return
   end
-  isLeaderInstance = Select(getESPHomeDriverIds(), 1) == C4:GetDeviceID()
-
   -- Firmware version is usually an entity and will be picked up by state updates
   C4:SetPropertyAttribs("Firmware Version", constants.HIDE_PROPERTY)
 
@@ -151,7 +146,7 @@ end
 function OPC.Automatic_Updates(propertyValue)
   log:trace("OPC.Automatic_Updates('%s')", propertyValue)
   --#ifndef DRIVERCENTRAL
-  if not gInitialized and not isLeaderInstance then
+  if not gInitialized then
     return
   end
   syncPropertyToOtherInstances("Automatic Updates", propertyValue)
@@ -161,7 +156,7 @@ end
 --#ifndef DRIVERCENTRAL
 function OPC.Update_Channel(propertyValue)
   log:trace("OPC.Update_Channel('%s')", propertyValue)
-  if not gInitialized and not isLeaderInstance then
+  if not gInitialized then
     return
   end
   syncPropertyToOtherInstances("Update Channel", propertyValue)
@@ -431,7 +426,7 @@ function Connect()
     local now = os.time()
     local secondsSinceLastUpdate = now - lastUpdateTime
     -- Recompute leader each cycle in case the previous leader was removed
-    isLeaderInstance = Select(getESPHomeDriverIds(), 1) == C4:GetDeviceID()
+    local isLeaderInstance = Select(getESPHomeDriverIds(), 1) == C4:GetDeviceID()
     -- Only the leader instance (lowest device ID) performs update checks
     if isLeaderInstance and toboolean(Properties["Automatic Updates"]) and secondsSinceLastUpdate > (30 * 60) then
       log:info("Checking for driver update (leader instance)")
