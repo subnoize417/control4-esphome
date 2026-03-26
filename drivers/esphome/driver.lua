@@ -91,8 +91,8 @@ local function getESPHomeDriverIds()
   return ids
 end
 
---- Sync a property value to all other ESPHome driver instances
---- Only syncs if the other instance has a different value (avoids infinite loops)
+--- Sync a property value to all other ESPHome driver instances.
+--- Only syncs if the other instance has a different value (avoids infinite loops).
 --- @param propertyName string The property name to sync
 --- @param propertyValue string The property value to sync
 local function syncPropertyToOtherInstances(propertyName, propertyValue)
@@ -100,7 +100,6 @@ local function syncPropertyToOtherInstances(propertyName, propertyValue)
   local myId = C4:GetDeviceID()
   for _, deviceId in ipairs(ids) do
     if deviceId ~= myId then
-      log:info("Syncing property '%s' = '%s' to device %d", propertyName, propertyValue, deviceId)
       SetDeviceProperties(deviceId, { [propertyName] = propertyValue }, true)
     end
   end
@@ -431,6 +430,8 @@ function Connect()
 
     local now = os.time()
     local secondsSinceLastUpdate = now - lastUpdateTime
+    -- Recompute leader each cycle in case the previous leader was removed
+    isLeaderInstance = Select(getESPHomeDriverIds(), 1) == C4:GetDeviceID()
     -- Only the leader instance (lowest device ID) performs update checks
     if isLeaderInstance and toboolean(Properties["Automatic Updates"]) and secondsSinceLastUpdate > (30 * 60) then
       log:info("Checking for driver update (leader instance)")
