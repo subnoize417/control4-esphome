@@ -417,24 +417,24 @@ supported ESPHome entity. Use this reference for Control4 programming.
 
 ### Variables by Entity Type
 
-| Entity Type   | Variable Name  | Type   | Notes                                  |
-| ------------- | -------------- | ------ | -------------------------------------- |
-| Binary Sensor | `{name} State` | BOOL   | "1" = triggered, "0" = clear           |
-| Sensor        | `{name}`       | NUMBER | Read-only, 1 decimal precision         |
-| Switch        | `{name} State` | BOOL   | "1" = on, "0" = off (writable)         |
-| Cover         | `{name} State` | STRING | "open", "closed", "opening", "closing" |
-| Number        | `{name}`       | NUMBER | Writable, 1 decimal precision          |
-| Select        | `{name}`       | STRING | Writable, current option               |
-| Text          | `{name}`       | STRING | Writable                               |
-| Text Sensor   | `{name}`       | STRING | Read-only                              |
-| Update        | `{name} Current Version`  | STRING | Read-only                              |
-| Update        | `{name} Latest Version`   | STRING | Read-only                              |
-| Update        | `{name} Update Available` | BOOL   | "1" = update available                 |
-| Update        | `{name} Update Progress`  | NUMBER | 0-100, when update in progress         |
-| Button        | (none)         | \-     | Use "Press Button" command (see below) |
-| Fan           | (none)         | \-     | State via Fan proxy                    |
-| Light         | (none)         | \-     | State via Light proxy                  |
-| Lock          | (none)         | \-     | State via Lock proxy                   |
+| Entity Type   | Variable Name             | Type   | Notes                                    |
+| ------------- | ------------------------- | ------ | ---------------------------------------- |
+| Binary Sensor | `{name} State`            | BOOL   | "1" = triggered, "0" = clear             |
+| Sensor        | `{name}`                  | NUMBER | Read-only, 1 decimal precision           |
+| Switch        | `{name} State`            | BOOL   | "1" = on, "0" = off (writable)           |
+| Cover         | `{name} State`            | STRING | "open", "closed", "opening", "closing"   |
+| Number        | `{name}`                  | NUMBER | Writable, 1 decimal precision            |
+| Select        | `{name}`                  | STRING | Writable, current option                 |
+| Text          | `{name}`                  | STRING | Writable                                 |
+| Text Sensor   | `{name}`                  | STRING | Read-only                                |
+| Update        | `{name} Current Version`  | STRING | Current installed version                 |
+| Update        | `{name} Latest Version`   | STRING | Latest available version                  |
+| Update        | `{name} Update Available` | BOOL   | "1" = update available, "0" = up to date |
+| Update        | `{name} Update Progress`  | NUMBER | 0–100 during update, 0 otherwise         |
+| Button        | (none)                    | \-     | Use "Press Button" command (see below)   |
+| Fan           | (none)                    | \-     | State via Fan proxy                      |
+| Light         | (none)                    | \-     | State via Light proxy                    |
+| Lock          | (none)                    | \-     | State via Lock proxy                     |
 
 > **Note:** `{name}` is replaced with the entity's display name from ESPHome
 > (e.g., a sensor named "Temperature" creates a variable called "Temperature").
@@ -457,12 +457,12 @@ supported ESPHome entity. Use this reference for Control4 programming.
 
 ### Commands
 
-| Command           | Parameters     | Description                                  |
-| ----------------- | -------------- | -------------------------------------------- |
-| Press Button      | Button         | Triggers an ESPHome button entity by name    |
-| Set Select        | Select, Option | Sets a select entity to the specified option |
-| Check for Updates | Update         | Checks an ESPHome device for firmware updates |
-| Install Update    | Update         | Installs a firmware update on an ESPHome device |
+| Command           | Parameters     | Description                                       |
+| ----------------- | -------------- | ------------------------------------------------- |
+| Press Button      | Button         | Triggers an ESPHome button entity by name         |
+| Set Select        | Select, Option | Sets a select entity to the specified option      |
+| Check for Updates | Update         | Checks for firmware updates on an update entity   |
+| Install Update    | Update         | Installs the available update on an update entity |
 
 > **Note:** The Button, Select, and Update parameters are dynamic lists
 > populated with discovered ESPHome entities of the corresponding type. The
@@ -808,6 +808,13 @@ can file an issue on GitHub:
 <div style="page-break-after: always"></div>
 
 # <span style="color:#17BCF2">Changelog</span>
+
+## Unreleased
+
+### Added
+
+- Added Update entity support for ESPHome firmware updates (version tracking,
+  update availability, check and install commands)
 
 ## v20260328 - 2026-03-28
 

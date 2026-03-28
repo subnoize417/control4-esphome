@@ -138,7 +138,7 @@ See the individual sub-driver documentation for device-specific details.
 | Switch              | ✅        |
 | Text                | ✅        |
 | Text Sensor         | ✅        |
-| Update              | ❌        |
+| Update              | ✅        |
 | Valve               | ❌        |
 | Voice Assistant     | ❌        |
 
@@ -512,20 +512,24 @@ supported ESPHome entity. Use this reference for Control4 programming.
 
 ### Variables by Entity Type
 
-| Entity Type   | Variable Name  | Type   | Notes                                  |
-| ------------- | -------------- | ------ | -------------------------------------- |
-| Binary Sensor | `{name} State` | BOOL   | "1" = triggered, "0" = clear           |
-| Sensor        | `{name}`       | NUMBER | Read-only, 1 decimal precision         |
-| Switch        | `{name} State` | BOOL   | "1" = on, "0" = off (writable)         |
-| Cover         | `{name} State` | STRING | "open", "closed", "opening", "closing" |
-| Number        | `{name}`       | NUMBER | Writable, 1 decimal precision          |
-| Select        | `{name}`       | STRING | Writable, current option               |
-| Text          | `{name}`       | STRING | Writable                               |
-| Text Sensor   | `{name}`       | STRING | Read-only                              |
-| Button        | (none)         | -      | Use "Press Button" command (see below) |
-| Fan           | (none)         | -      | State via Fan proxy                    |
-| Light         | (none)         | -      | State via Light proxy                  |
-| Lock          | (none)         | -      | State via Lock proxy                   |
+| Entity Type   | Variable Name             | Type   | Notes                                    |
+| ------------- | ------------------------- | ------ | ---------------------------------------- |
+| Binary Sensor | `{name} State`            | BOOL   | "1" = triggered, "0" = clear             |
+| Sensor        | `{name}`                  | NUMBER | Read-only, 1 decimal precision           |
+| Switch        | `{name} State`            | BOOL   | "1" = on, "0" = off (writable)           |
+| Cover         | `{name} State`            | STRING | "open", "closed", "opening", "closing"   |
+| Number        | `{name}`                  | NUMBER | Writable, 1 decimal precision            |
+| Select        | `{name}`                  | STRING | Writable, current option                 |
+| Text          | `{name}`                  | STRING | Writable                                 |
+| Text Sensor   | `{name}`                  | STRING | Read-only                                |
+| Update        | `{name} Current Version`  | STRING | Current installed version                 |
+| Update        | `{name} Latest Version`   | STRING | Latest available version                  |
+| Update        | `{name} Update Available` | BOOL   | "1" = update available, "0" = up to date |
+| Update        | `{name} Update Progress`  | NUMBER | 0–100 during update, 0 otherwise         |
+| Button        | (none)                    | -      | Use "Press Button" command (see below)   |
+| Fan           | (none)                    | -      | State via Fan proxy                      |
+| Light         | (none)                    | -      | State via Light proxy                    |
+| Lock          | (none)                    | -      | State via Lock proxy                     |
 
 > **Note:** `{name}` is replaced with the entity's display name from ESPHome
 > (e.g., a sensor named "Temperature" creates a variable called "Temperature").
@@ -543,19 +547,22 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Light         | `ESPHOME_LIGHT`                 | Bind to ESPHome Light sub-driver       |
 | Lock          | `ESPHOME_LOCK`                  | Bind to ESPHome Lock sub-driver        |
 
-> **Note:** Sensor, Number, Select, Text, and Text Sensor entities do not create
+> **Note:** Sensor, Number, Select, Text, Text Sensor, and Update entities do not create
 > bindings. They expose data only through variables.
 
 ### Commands
 
-| Command      | Parameters     | Description                                  |
-| ------------ | -------------- | -------------------------------------------- |
-| Press Button | Button         | Triggers an ESPHome button entity by name    |
-| Set Select   | Select, Option | Sets a select entity to the specified option |
+| Command           | Parameters     | Description                                       |
+| ----------------- | -------------- | ------------------------------------------------- |
+| Press Button      | Button         | Triggers an ESPHome button entity by name         |
+| Set Select        | Select, Option | Sets a select entity to the specified option      |
+| Check for Updates | Update         | Checks for firmware updates on an update entity   |
+| Install Update    | Update         | Installs the available update on an update entity |
 
-> **Note:** The Button parameter is a dynamic list populated with discovered
-> ESPHome button entities. The Select and Option parameters are dynamic lists
-> populated with discovered ESPHome select entities and their available options.
+> **Note:** The Button, Select, and Update parameters are dynamic lists
+> populated with discovered ESPHome entities of the corresponding type. The
+> Option parameter is populated with the available options for the selected
+> Select entity.
 
 <div style="page-break-after: always"></div>
 
