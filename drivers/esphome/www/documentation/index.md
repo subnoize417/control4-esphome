@@ -522,8 +522,8 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Select        | `{name}`                  | STRING | Writable, current option                 |
 | Text          | `{name}`                  | STRING | Writable                                 |
 | Text Sensor   | `{name}`                  | STRING | Read-only                                |
-| Update        | `{name} Current Version`  | STRING | Current installed version                 |
-| Update        | `{name} Latest Version`   | STRING | Latest available version                  |
+| Update        | `{name} Current Version`  | STRING | Current installed version                |
+| Update        | `{name} Latest Version`   | STRING | Latest available version                 |
 | Update        | `{name} Update Available` | BOOL   | "1" = update available, "0" = up to date |
 | Update        | `{name} Update Progress`  | NUMBER | 0–100 during update, 0 otherwise         |
 | Button        | (none)                    | -      | Use "Press Button" command (see below)   |
@@ -547,8 +547,8 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Light         | `ESPHOME_LIGHT`                 | Bind to ESPHome Light sub-driver       |
 | Lock          | `ESPHOME_LOCK`                  | Bind to ESPHome Lock sub-driver        |
 
-> **Note:** Sensor, Number, Select, Text, Text Sensor, and Update entities do not create
-> bindings. They expose data only through variables.
+> **Note:** Sensor, Number, Select, Text, Text Sensor, and Update entities do
+> not create bindings. They expose data only through variables.
 
 ### Commands
 

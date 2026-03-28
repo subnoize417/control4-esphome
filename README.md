@@ -427,8 +427,8 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Select        | `{name}`                  | STRING | Writable, current option                 |
 | Text          | `{name}`                  | STRING | Writable                                 |
 | Text Sensor   | `{name}`                  | STRING | Read-only                                |
-| Update        | `{name} Current Version`  | STRING | Current installed version                 |
-| Update        | `{name} Latest Version`   | STRING | Latest available version                  |
+| Update        | `{name} Current Version`  | STRING | Current installed version                |
+| Update        | `{name} Latest Version`   | STRING | Latest available version                 |
 | Update        | `{name} Update Available` | BOOL   | "1" = update available, "0" = up to date |
 | Update        | `{name} Update Progress`  | NUMBER | 0–100 during update, 0 otherwise         |
 | Button        | (none)                    | \-     | Use "Press Button" command (see below)   |
