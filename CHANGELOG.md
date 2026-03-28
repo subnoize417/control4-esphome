@@ -12,6 +12,13 @@
 [//]: # "- Removed"
 <!-- prettier-ignore-end -->
 
+## Unreleased
+
+### Added
+
+- Added Camera entity support with "Request Snapshot" programming command and
+  availability tracking (DRV-34)
+
 ## v20260326 - 2026-03-26
 
 <!-- #ifndef DRIVERCENTRAL -->

@@ -273,6 +273,16 @@
           </param>
         </params>
       </command>
+      <command>
+        <name>Request Snapshot</name>
+        <description>Request a snapshot from PARAM1 camera</description>
+        <params>
+          <param>
+            <name>Camera</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
     </commands>
   </config>
 </devicedata>
