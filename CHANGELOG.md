@@ -12,6 +12,12 @@
 [//]: # "- Removed"
 <!-- prettier-ignore-end -->
 
+## Unreleased
+
+### Added
+
+- Added Siren entity support: audible/visual alarm entities exposed as relay bindings with on/off control
+
 ## v20260326 - 2026-03-26
 
 <!-- #ifndef DRIVERCENTRAL -->
