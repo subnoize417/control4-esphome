@@ -12,6 +12,12 @@
 [//]: # "- Removed"
 <!-- prettier-ignore-end -->
 
+## Unreleased
+
+### Added
+
+- Added Valve entity support: water valves, gas shutoffs, and similar open/close devices exposed as contact sensor and relay bindings with open/close/stop control
+
 ## v20260326 - 2026-03-26
 
 <!-- #ifndef DRIVERCENTRAL -->

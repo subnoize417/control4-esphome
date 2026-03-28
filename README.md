@@ -114,7 +114,7 @@ See the individual sub-driver documentation for device-specific details.
 | Text                | ✅        |
 | Text Sensor         | ✅        |
 | Update              | ❌        |
-| Valve               | ❌        |
+| Valve               | ✅        |
 | Voice Assistant     | ❌        |
 
 </div>
