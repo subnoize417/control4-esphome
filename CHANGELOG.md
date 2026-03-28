@@ -12,6 +12,13 @@
 [//]: # "- Removed"
 <!-- prettier-ignore-end -->
 
+## Unreleased
+
+### Added
+
+- Added Update entity support for ESPHome firmware updates (version tracking,
+  update availability, check and install commands)
+
 ## v20260328 - 2026-03-28
 
 ### Added

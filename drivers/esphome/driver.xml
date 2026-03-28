@@ -287,6 +287,26 @@
           </param>
         </params>
       </command>
+      <command>
+        <name>Check for Updates</name>
+        <description>Check NAME for updates PARAM1</description>
+        <params>
+          <param>
+            <name>Update</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
+      <command>
+        <name>Install Update</name>
+        <description>Install update on NAME PARAM1</description>
+        <params>
+          <param>
+            <name>Update</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
     </commands>
   </config>
 </devicedata>

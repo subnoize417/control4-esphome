@@ -113,7 +113,7 @@ See the individual sub-driver documentation for device-specific details.
 | Switch              | ✅        |
 | Text                | ✅        |
 | Text Sensor         | ✅        |
-| Update              | ❌        |
+| Update              | ✅        |
 | Valve               | ❌        |
 | Voice Assistant     | ❌        |
 
@@ -427,6 +427,10 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Select        | `{name}`       | STRING | Writable, current option               |
 | Text          | `{name}`       | STRING | Writable                               |
 | Text Sensor   | `{name}`       | STRING | Read-only                              |
+| Update        | `{name} Current Version`  | STRING | Read-only                              |
+| Update        | `{name} Latest Version`   | STRING | Read-only                              |
+| Update        | `{name} Update Available` | BOOL   | "1" = update available                 |
+| Update        | `{name} Update Progress`  | NUMBER | 0-100, when update in progress         |
 | Button        | (none)         | \-     | Use "Press Button" command (see below) |
 | Fan           | (none)         | \-     | State via Fan proxy                    |
 | Light         | (none)         | \-     | State via Light proxy                  |
@@ -448,19 +452,22 @@ supported ESPHome entity. Use this reference for Control4 programming.
 | Light         | `ESPHOME_LIGHT`                 | Bind to ESPHome Light sub-driver       |
 | Lock          | `ESPHOME_LOCK`                  | Bind to ESPHome Lock sub-driver        |
 
-> **Note:** Sensor, Number, Select, Text, and Text Sensor entities do not create
-> bindings. They expose data only through variables.
+> **Note:** Sensor, Number, Select, Text, Text Sensor, and Update entities do
+> not create bindings. They expose data only through variables.
 
 ### Commands
 
-| Command      | Parameters     | Description                                  |
-| ------------ | -------------- | -------------------------------------------- |
-| Press Button | Button         | Triggers an ESPHome button entity by name    |
-| Set Select   | Select, Option | Sets a select entity to the specified option |
+| Command           | Parameters     | Description                                  |
+| ----------------- | -------------- | -------------------------------------------- |
+| Press Button      | Button         | Triggers an ESPHome button entity by name    |
+| Set Select        | Select, Option | Sets a select entity to the specified option |
+| Check for Updates | Update         | Checks an ESPHome device for firmware updates |
+| Install Update    | Update         | Installs a firmware update on an ESPHome device |
 
-> **Note:** The Button parameter is a dynamic list populated with discovered
-> ESPHome button entities. The Select and Option parameters are dynamic lists
-> populated with discovered ESPHome select entities and their available options.
+> **Note:** The Button, Select, and Update parameters are dynamic lists
+> populated with discovered ESPHome entities of the corresponding type. The
+> Option parameter is populated with the available options for the selected
+> Select entity.
 
 <div style="page-break-after: always"></div>
 
