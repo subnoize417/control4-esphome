@@ -115,15 +115,9 @@ See the individual sub-driver documentation for device-specific details.
 | Text Sensor         | ✅                            |
 | Update              | ❌                            |
 | Valve               | ❌                            |
-| Voice Assistant     | ❌[\*](#voice-assistant-note) |
+| Voice Assistant     | ❌                            |
 
 </div>
-
-<a id="voice-assistant-note"></a>
-
-> \* Voice Assistant requires a speech-to-text and intent processing pipeline
-> (e.g. Home Assistant Assist). Control4 does not natively provide voice intent
-> handling, so this entity type is not supported.
 
 <div style="page-break-after: always"></div>
 
