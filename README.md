@@ -90,7 +90,7 @@ See the individual sub-driver documentation for device-specific details.
 
 | Entity Type         | Supported |
 | ------------------- | --------- |
-| Alarm Control Panel | ❌        |
+| Alarm Control Panel | ✅        |
 | API Noise           | ✅        |
 | Binary Sensor       | ✅        |
 | Bluetooth Proxy     | ✅        |
@@ -818,6 +818,10 @@ can file an issue on GitHub:
 
 ### Added
 
+- Added Alarm Control Panel entity support: ESPHome alarm control panel entities
+  are now exposed through a dedicated security panel/partition sub-driver with
+  arm/disarm commands (Stay, Away, Night, Vacation, Custom Bypass), user code
+  support, and real-time partition state synchronization
 - Added Event entity support: stateless triggers (button presses, gestures,
   doorbell rings) now create Control4 events for programming and track the last
   event type in a variable
