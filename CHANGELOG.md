@@ -12,6 +12,14 @@
 [//]: # "- Removed"
 <!-- prettier-ignore-end -->
 
+## Unreleased
+
+### Added
+
+- Added Media Player entity support using the Control4 Generic Media Player
+  proxy (sub-driver) for native transport controls (play, pause, stop) and
+  real-time playback state synchronization
+
 ## v20260326 - 2026-03-26
 
 <!-- #ifndef DRIVERCENTRAL -->

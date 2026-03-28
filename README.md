@@ -799,6 +799,14 @@ can file an issue on GitHub:
 
 # <span style="color:#17BCF2">Changelog</span>
 
+## Unreleased
+
+### Added
+
+- Added Media Player entity support using the Control4 Generic Media Player
+  proxy (sub-driver) for native transport controls (play, pause, stop) and
+  real-time playback state synchronization
+
 ## v20260326 - 2026-03-26
 
 ### Fixed
