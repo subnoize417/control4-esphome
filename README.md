@@ -799,6 +799,13 @@ can file an issue on GitHub:
 
 # <span style="color:#17BCF2">Changelog</span>
 
+## Unreleased
+
+### Added
+
+- Added Siren entity support: audible/visual alarm entities exposed as relay
+  bindings with on/off control
+
 ## v20260326 - 2026-03-26
 
 ### Fixed
